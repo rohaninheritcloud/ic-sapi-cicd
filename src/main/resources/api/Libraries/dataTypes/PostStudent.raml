@@ -1,0 +1,50 @@
+#%RAML 1.0 Library
+types:
+  new_student:
+    description: creating new price book entry
+    type: object
+    properties:
+      phone:
+        type: string
+        minLength: 10
+        maxLength: 10
+      name:
+        description: name of student
+        type: string
+        required: true
+        minLength: 4
+      gender:
+        description: gender of student
+        type: string
+        required: true
+        minLength: 3
+      address:
+        description: address of student
+        type: string
+        required: true
+        minLength: 5
+      email:
+        description: email of student
+        type: string
+        required: true
+      date_of_birth:
+        description: date of birth of student
+        type: string
+        required: true
+  new_student_response:
+   properties:
+      is_success :
+        description: Success Validation
+        type: boolean
+        required: true
+      response:
+        type: array
+        items:
+          type: object
+          properties:
+           payload:
+            type: object
+            properties:
+              success: boolean
+              id: string
+              errors: array

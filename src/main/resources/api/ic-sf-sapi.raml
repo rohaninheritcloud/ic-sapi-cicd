@@ -1,0 +1,70 @@
+#%RAML 1.0
+title: ic-student-raml
+description: Collection of Salesforce SAPIs for IC Integrations
+protocols:
+  - HTTPS
+version:
+  v1
+mediaType: application/json
+traits:
+  headers:
+    !include /traits/Trait.raml
+  trackingParams:
+    headers:
+      X-Correlation-ID:
+        type: string
+        required: true
+resourceTypes:
+  allCollection: !include /resourceTypes/Collections.raml
+
+uses:
+  errorDatatype: /Libraries/dataTypes/ErrorDataType.raml
+  allStudents: /Libraries/dataTypes/GetAllStudentDataType.raml
+  newStudent: /Libraries/dataTypes/PostStudent.raml
+  singleStudent: /Libraries/dataTypes/GetSingleStudent.raml
+  deleteStudent: /Libraries/dataTypes/DeleteStudentDataType.raml
+  updateStudent: /Libraries/dataTypes/UpdateStudent.raml
+/student:
+  is: [headers,trackingParams]
+  description: adding new student
+  type:
+    allCollection:
+      post-request-schema:
+        newStudent.new_student
+      post-request-example:
+        !include /examples/requests/createStudentExample.json
+      post-response-schema: newStudent.new_student_response
+      post-response-example: !include /examples/responses/StudentCreationResponseExample.json
+      get-response-schema:
+        allStudents.get_all
+      get-response-example:
+        !include /examples/responses/getAllStudentExample.json
+      errors-schema: errorDatatype.error
+  get:
+  post:
+  /{ID}:
+    is: [headers,trackingParams]
+    description: used to retrieve a single student
+    uriParameters:
+      ID:
+        required: true
+        type: string
+        minLength: 7
+    type:
+      allCollection:
+        get-response-schema:
+            singleStudent.get_single
+        get-response-example:
+            !include /examples/responses/getSingleStudentExample.json
+        delete-response-schema:
+            deleteStudent.delete
+        delete-response-example: !include /examples/responses/StudentDeletionResponseExample.json
+        put-request-schema: updateStudent.update_student
+        put-request-example: !include /examples/requests/updateStudentExample.json
+        put-response-schema:
+          updateStudent.student_updated_response
+        put-response-example: !include /examples/responses/StudentUpdationResponseExample.json
+        errors-schema: errorDatatype.error
+    get:
+    delete:
+    put:

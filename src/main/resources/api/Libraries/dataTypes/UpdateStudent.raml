@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+types:
+  update_student:
+    description: price book entry updation
+    type: object
+  student_updated_response:
+   properties:
+      is_success :
+        description: Checking the response
+        type: boolean
+        required: true
+      response:
+        type: array
+        items:
+          type: object
+          properties:
+           payload:
+            type: object
+            properties:
+              success: boolean
+              id: string
+              errors: array

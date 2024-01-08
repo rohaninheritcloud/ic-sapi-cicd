@@ -1,0 +1,13 @@
+sf:
+  user: "![oltWABs9IVKXJ6v4Twg3XIbvfagQsjB7tRf6h5NioSP9/vqINhlhvw==]"
+  pass: "![+fhWBGQ0+P/6cjo/ax1a0A==]"
+  token: "![SqAQyAf8WkdNzYGaN5Rt79V0Gsb/rXc7st5fIgKhMOs=]"
+  
+auto-discovery:
+  id: "![QI62r5kzF7zZqAi+MEbJWA==]"
+
+secure:
+  key: "![9PmDNd/Ror0=]"
+  
+https:
+  port: "8082"
