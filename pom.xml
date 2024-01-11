@@ -29,6 +29,18 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+						<muleVersion>4.5.2</muleVersion>
+						<uri>https://anypoint.mulesoft.com</uri>
+                                                <workerType>MICRO</workerType>
+                                                <applicationName>custom-sfdc-sapi</applicationName>
+						<objectStoreV2>server</objectStoreV2>
+                                                 <username>rohan170002</username>
+                                                   <password>Rohan@1700</password>
+						<environment>Sandbox</environment>
+				   </cloudHubDeployment>
+		        </configuration>
 			</plugin>
 		</plugins>
 	</build>
